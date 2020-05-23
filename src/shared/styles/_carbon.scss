@@ -1,0 +1,27 @@
+$feature-flags: (
+        ui-shell: true,
+);
+
+@import "~carbon-components/scss/globals/scss/styles";
+@import "~carbon-components/scss/globals/scss/vendor/@carbon/elements/scss/type/classes";
+@include carbon--type-classes;
+
+@import "~carbon-components/scss/globals/scss/spacing";
+
+$spaceAmounts: $spacing-01, $spacing-02, $spacing-03, $spacing-04, $spacing-05, $spacing-06, $spacing-07, $spacing-08, $spacing-09;
+
+$sides: top, bottom, left, right;
+
+@each $space in $spaceAmounts {
+  $index: index($spaceAmounts, $space);
+
+  @each $side in $sides {
+    .bx--spacing-margin-#{$side}-0#{$index} {
+      margin-#{$side}: #{$space};
+    }
+
+    .bx--spacing-padding-#{$side}-0#{$index} {
+      padding-#{$side}: #{$space}
+    }
+  }
+}

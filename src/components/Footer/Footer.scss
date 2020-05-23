@@ -1,0 +1,41 @@
+@import "../../shared/styles/variables";
+#footer {
+  margin: auto 0 0;
+  background-color: $text-01;
+}
+
+.footer__section-header {
+  color: white;
+}
+
+.bx--row:nth-of-type(2) {
+  .bx--col {
+    color: white;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.bx--list--unordered {
+  .bx--list__item {
+    &:before {
+      content: none;
+      position: unset;
+      left: unset;
+    }
+
+    .bx--link {
+      color: $white;
+
+      &:hover {
+        color: $inverse-link;
+        text-decoration: none;
+      }
+    }
+  }
+}

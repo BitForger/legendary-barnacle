@@ -6,7 +6,6 @@ COPY package* ./
 COPY tsconfig.json .
 
 RUN yarn install
-RUN npm install -g react-scripts
 
 COPY . ./
 
