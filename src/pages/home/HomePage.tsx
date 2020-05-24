@@ -1,6 +1,6 @@
 import React, {Component, ReactNode} from "react";
 import {Column, Grid, Row} from "carbon-components-react";
-import './HomePage.scss'
+import './HomePage.module.scss'
 
 export class HomePage extends Component<any, any> {
     render(): ReactNode {

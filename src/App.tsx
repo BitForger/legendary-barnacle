@@ -5,6 +5,7 @@ import {HomePage} from "./pages/home/HomePage";
 import {Header} from "./components/Header";
 import {Content} from "carbon-components-react";
 import {Footer} from "./components/Footer/Footer";
+import {Projects} from "./pages/projects/Projects";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Content>
                 <Switch>
                     <Route exact path="/" component={HomePage}/>
+                    <Route path="/projects" component={Projects}/>
                 </Switch>
             </Content>
             <Footer/>
