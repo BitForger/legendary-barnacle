@@ -3,7 +3,11 @@
   margin: auto 0 0;
   background-color: $text-01;
 
-  .bx--row:nth-of-type(2) {
+  >.bx--grid {
+    max-width: 100vw;
+  }
+
+  >.bx--row:nth-of-type(2) {
     .bx--col {
       color: white;
       display: flex;
