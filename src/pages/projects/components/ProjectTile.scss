@@ -1,0 +1,24 @@
+@import "~carbon-components/scss/globals/scss/spacing";
+
+.project-tile {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  > * {
+    flex: 1 0 100%;
+  }
+
+  .project-tile__header {
+    margin-bottom: $spacing-04;
+  }
+
+  .project-tile__description {
+    margin-bottom: $spacing-06;
+  }
+
+  .project-tile__languages {
+
+  }
+}
