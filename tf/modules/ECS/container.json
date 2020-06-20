@@ -1,0 +1,31 @@
+[
+  {
+    "name": "noahkovacs-me",
+    "executionRoleArn": "arn:aws:iam::508511800738:role/ecsTaskExecutionRole",
+    "image": "508511800738.dkr.ecr.us-east-1.amazonaws.com/noahkovacs-me:latest",
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80
+      }
+    ],
+    "secrets": [
+      {
+        "valueFrom": "arn:aws:ssm:us-east-1:508511800738:parameter/noahkovacs-me/github-uri",
+        "name": "REACT_APP_GITHUB_URI"
+      },
+      {
+        "valueFrom": "arn:aws:ssm:us-east-1:508511800738:parameter/noahkovacs-me/github-token",
+        "name": "REACT_APP_GITHUB_AUTH_TOKEN"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/noahkovacs-me",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "web"
+      }
+    }
+  }
+]
