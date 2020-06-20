@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "main" {
-  name = "noahkovacs-me-frontend"
+  name = "noahkovacs-me"
   port = 80
   protocol = "HTTP"
   target_type = "instance"

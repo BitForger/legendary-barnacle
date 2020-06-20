@@ -10,7 +10,7 @@ resource "aws_ecs_service" "frontend" {
   cluster = "Production"
   launch_type = "EC2"
   load_balancer {
-    container_name = "noahkovacs-me-frontend"
+    container_name = "noahkovacs-me"
     container_port = 80
     target_group_arn = aws_lb_target_group.main.arn
   }
