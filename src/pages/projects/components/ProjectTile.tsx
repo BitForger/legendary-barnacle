@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {ClickableTile, Tag, Tile} from "carbon-components-react";
+import {ClickableTile, Tag} from "carbon-components-react";
 import './ProjectTile.scss'
 
 interface Props {
