@@ -5,7 +5,7 @@ import {
     HeaderNavigation,
     SkipToContent,
     HeaderMenuItem,
-    HeaderGlobalBar
+    HeaderGlobalBar, HeaderGlobalAction
 } from "carbon-components-react";
 import {Link, LinkProps as RRLinkProps} from "react-router-dom";
 
@@ -18,7 +18,13 @@ export class Header extends Component<any, any>{
             <HeaderNavigation aria-label={'Primary nav bar'}>
                 <HeaderMenuItem<RRLinkProps> element={Link} to={"/projects"}>Projects</HeaderMenuItem>
             </HeaderNavigation>
-            <HeaderGlobalBar />
+            <HeaderGlobalBar>
+                <a href={'https://github.com/bitforger'} target={'_blank'} rel={'noopener noreferrer'}>
+                    <HeaderGlobalAction>
+                        <i className="fab fa-github" style={{color:'white'}}></i>
+                    </HeaderGlobalAction>
+                </a>
+            </HeaderGlobalBar>
         </CarbonHeader>
     }
 }

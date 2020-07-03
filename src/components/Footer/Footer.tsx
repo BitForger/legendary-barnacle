@@ -23,6 +23,18 @@ export class Footer extends Component<any, any> {
                         </ListItem>
                     </UnorderedList>
                 </Column>
+                <Column>
+                    <h5 className="bx--type-productive-heading-03 bx--spacing-margin-bottom-06 footer__section-header">Social Links</h5>
+                    <UnorderedList>
+                        <ListItem>
+                            <a className={'bx--link'} href={'https://github.com/bitforger'} target={'_blank'} rel={'noopener noreferrer'}>
+                                <i className="fab fa-github"></i>
+                                &nbsp;
+                                GitHub
+                            </a>
+                        </ListItem>
+                    </UnorderedList>
+                </Column>
             </Row>
             <Row>
                 <Column>
