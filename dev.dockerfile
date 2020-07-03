@@ -3,6 +3,7 @@ WORKDIR /home/app
 ENV PATH /home/app/node_modules/.bin:$PATH
 
 COPY package* ./
+COPY yarn.lock .
 COPY tsconfig.json .
 
 RUN yarn install

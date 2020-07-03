@@ -1,10 +1,18 @@
-FROM node:alpine as build
+FROM node:12 as build
 WORKDIR /home/node/app
 ARG REACT_APP_GITHUB_AUTH_TOKEN
 ARG REACT_APP_GITHUB_URI
 
-COPY . /home/node/app
+COPY package.json .
+COPY yarn.lock .
+COPY tsconfig.json .
+
 RUN yarn install
+
+COPY src /home/node/app/src
+COPY scripts /home/node/app/scripts
+COPY public /home/node/app/public
+COPY config /home/node/app/config
 
 RUN yarn build
 
