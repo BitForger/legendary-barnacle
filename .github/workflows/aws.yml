@@ -84,4 +84,4 @@ jobs:
         cd tf/production
         terraform init
         terraform plan
-        terraform apply -auto-approve
+        terraform apply -auto-approve -var="tag=${{github.sha}}"

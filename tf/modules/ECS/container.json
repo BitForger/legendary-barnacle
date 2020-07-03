@@ -2,7 +2,7 @@
   {
     "name": "noahkovacs-me",
     "executionRoleArn": "arn:aws:iam::508511800738:role/ecsTaskExecutionRole",
-    "image": "508511800738.dkr.ecr.us-east-1.amazonaws.com/noahkovacs-me:latest",
+    "image": "508511800738.dkr.ecr.us-east-1.amazonaws.com/noahkovacs-me:${var.tag}",
     "essential": true,
     "portMappings": [
       {

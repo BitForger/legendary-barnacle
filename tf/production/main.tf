@@ -10,6 +10,13 @@ terraform {
   }
 }
 
+variable "tag" {
+  type = string
+  default = "latest"
+  description = "The GitHub commit SHA or version or tag desired"
+}
+
 module "ECS" {
   source = "../modules/ECS"
+  tag = var.tag
 }
