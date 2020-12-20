@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Grid, Row, Column, Tile, SkeletonPlaceholder, SkeletonText} from "carbon-components-react";
 import {githubClient} from "../../shared/Apollo/Clients";
-import {gql} from "apollo-boost";
+import {gql, ApolloQueryResult} from "apollo-boost";
 import {ProjectTile} from "./components/ProjectTile";
 
 interface State {
@@ -17,7 +17,7 @@ export class Projects extends Component<any, State> {
     async componentDidMount() {
         try {
             this.setState({loading: true});
-            const data = await githubClient.query({
+            const {data, errors}: ApolloQueryResult<{user: {id: string, pinnedItems: any[], repositories: any[]}}> = await githubClient.query({
                 query: gql`
                     query GetProjects {
                         user(login: "Bitforger") {
@@ -73,8 +73,9 @@ export class Projects extends Component<any, State> {
             });
             this.setState({loading: false});
             console.log('data', data);
+
             this.setState({
-                userData: data.data,
+                userData: data,
             });
         } catch (e) {
             console.log(e);
