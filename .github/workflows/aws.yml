@@ -50,6 +50,14 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+    
+    - name: GitHub Action for DigitalOcean - doctl
+      # You may pin to the exact commit or the version.
+      # uses: digitalocean/action-doctl@d36a87b1d9c7bd55c8d8434ff2a991a6ee32a448
+      uses: digitalocean/action-doctl@v2.1.0
+      with:
+        # DigitalOcean API Token
+        token: ${{ secrets.DO_REGISTRY_KEY }}
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
@@ -68,6 +76,11 @@ jobs:
         docker tag "noahkovacs-me:$IMAGE_TAG" "$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
         docker push "$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        doctl registry login
+        docker tag noahkovacs-me:$IMAGE_TAG registry.digitalocean.com/pixabit-apps/noahkovacs-me:$IMAGE_TAG
+        docker tag noahkovacs-me:$IMAGE_TAG registry.digitalocean.com/pixabit-apps/noahkovacs-me:$GITHUB_SHA
+        docker push registry.digitalocean.com/pixabit-apps/noahkovacs-me
+        
 
     - name: Setup Terraform
       run: |
