@@ -84,7 +84,7 @@ jobs:
 
     - name: Setup Terraform
       run: |
-        curl https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip -o terraform.zip
+        curl https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_amd64.zip -o terraform.zip
         unzip terraform.zip
         PATH="$PATH:$(dirname terraform)/$(basename terraform)"
         terraform -version
