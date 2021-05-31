@@ -5,6 +5,11 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  border-radius: 15px;
+
+  &:hover {
+    box-shadow: 0 0 10px -5px #6d6d6d;
+  }
 
   > * {
     flex: 1 0 100%;

@@ -20,7 +20,7 @@ export class Header extends Component<any, any>{
             </HeaderNavigation>
             <HeaderGlobalBar>
                 <a href={'https://github.com/bitforger'} target={'_blank'} rel={'noopener noreferrer'}>
-                    <HeaderGlobalAction>
+                    <HeaderGlobalAction aria-label={'GitHub'}>
                         <i className="fab fa-github" style={{color:'white'}}></i>
                     </HeaderGlobalAction>
                 </a>

@@ -3,6 +3,7 @@ import {Grid, Row, Column, Tile, SkeletonPlaceholder, SkeletonText} from "carbon
 import {githubClient} from "../../shared/Apollo/Clients";
 import {gql, ApolloQueryResult} from "apollo-boost";
 import {ProjectTile} from "./components/ProjectTile";
+import {GetProjects, GetProjects_user_repositories_nodes} from "./__generated__/GetProjects";
 
 interface State {
     loading: boolean;
@@ -14,10 +15,15 @@ export class Projects extends Component<any, State> {
         loading: false,
     }
 
+    excludedRepos = [
+        'BitForger',
+        'flarum-ext-jwt'
+    ]
+
     async componentDidMount() {
         try {
             this.setState({loading: true});
-            const {data, errors}: ApolloQueryResult<{user: {id: string, pinnedItems: any[], repositories: any[]}}> = await githubClient.query({
+            const {data, errors}: ApolloQueryResult<GetProjects> = await githubClient.query({
                 query: gql`
                     query GetProjects {
                         user(login: "Bitforger") {
@@ -45,7 +51,7 @@ export class Projects extends Component<any, State> {
                                     }
                                 }
                             }
-                            repositories(first: 12, isFork: false, orderBy: {field: UPDATED_AT, direction: DESC}, privacy: PUBLIC, affiliations: OWNER) {
+                            repositories(first: 17, isFork: false, orderBy: {field: UPDATED_AT, direction: DESC}, privacy: PUBLIC, affiliations: OWNER) {
                                 nodes {
                                     id
                                     isLocked
@@ -72,7 +78,6 @@ export class Projects extends Component<any, State> {
                 `,
             });
             this.setState({loading: false});
-            console.log('data', data);
 
             this.setState({
                 userData: data,
@@ -143,7 +148,7 @@ export class Projects extends Component<any, State> {
         if (!this.state.loading) {
             const {user} = this.state.userData ?? {user: ''};
             const pinnedItems = user?.pinnedItems?.nodes;
-            const repos = user?.repositories?.nodes;
+            const repos = user?.repositories?.nodes?.filter((value: GetProjects_user_repositories_nodes) => !this.excludedRepos.includes(value.name));
             let pinnedItemTiles: any = [];
             let repoTiles: any = [];
 
