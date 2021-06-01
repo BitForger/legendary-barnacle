@@ -37,7 +37,6 @@ export class App extends Component<any, any> {
                         {this.routes.map(value => <Route exact={value.exact}
                                                          path={value.path}
                                                          component={value.component}
-                                                         title={value.meta?.title}
                                                          key={nanoid(6)}
                         />)}
                     </Switch>
